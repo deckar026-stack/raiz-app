@@ -25,7 +25,7 @@ const productosIniciales = [
 export default function Carrito() {
   const [items, setItems] = useState(productosIniciales)
 
-  const cambiarCantidad = (id, delta) => {
+  const cambiarCantidad = (id: number, delta: number) => {
     setItems(items.map(item =>
       item.id === id
         ? { ...item, cantidad: Math.max(1, item.cantidad + delta) }
@@ -33,7 +33,7 @@ export default function Carrito() {
     ))
   }
 
-  const eliminar = (id) => {
+  const eliminar = (id: number) => {
     setItems(items.filter(item => item.id !== id))
   }
 
