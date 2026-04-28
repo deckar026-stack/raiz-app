@@ -92,7 +92,7 @@ export default function Catalogo() {
     ? productos
     : productos.filter(p => p.categoria === categoriaActiva)
 
-  const agregarAlCarrito = (producto) => {
+    const agregarAlCarrito = (producto: typeof productos[0]) => {
     setCarrito([...carrito, producto])
   }
 
