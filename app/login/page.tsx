@@ -13,7 +13,7 @@ export default function Home() {
       <div style={{
         position: 'fixed',
         top: 0, left: 0, right: 0, bottom: 0,
-        backgroundImage: `url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1800&q=80')`,
+        backgroundImage: `url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1800&q=80')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         zIndex: 0,
