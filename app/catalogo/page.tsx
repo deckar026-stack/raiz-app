@@ -86,7 +86,7 @@ const categorias = [
 
 export default function Catalogo() {
   const [categoriaActiva, setCategoriaActiva] = useState('todos')
-  const [carrito, setCarrito] = useState([])
+  const [carrito, setCarrito] = useState<typeof productos>([])
 
   const productosFiltrados = categoriaActiva === 'todos'
     ? productos
