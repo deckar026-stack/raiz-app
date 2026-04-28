@@ -35,7 +35,7 @@ export default function Suscripciones() {
   const [planSeleccionado, setPlanSeleccionado] = useState('descubre')
   const [suscrito, setSuscrito] = useState(false)
 
-  const plan = planes.find(p => p.id === planSeleccionado)
+  const plan = planes.find(p => p.id === planSeleccionado) ?? planes[0]
 
   if (suscrito) {
     return (
