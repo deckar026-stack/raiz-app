@@ -8,7 +8,7 @@ const pedidos = [
   { id: '#004', producto: 'Café Especial Huila', cantidad: '250g', cliente: 'Luis Torres', ciudad: 'Barranquilla', estado: 'entregado', valor: 28000, fecha: 'Ayer' },
 ]
 
-const coloresEstado = {
+const coloresEstado: Record<string, { bg: string; color: string; label: string }> = {
   pendiente: { bg: '#FFF3CD', color: '#856404', label: '⏳ Pendiente' },
   enviado: { bg: '#CCE5FF', color: '#004085', label: '🚚 Enviado' },
   entregado: { bg: '#D4EDDA', color: '#155724', label: '✅ Entregado' },
