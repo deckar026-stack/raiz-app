@@ -1,191 +1,201 @@
-export default function Home() {
+'use client'
+import { useState } from 'react'
+
+export default function Contacto() {
+  const [enviado, setEnviado] = useState(false)
+  const [form, setForm] = useState({ nombre: '', email: '', tipo: 'consumidor', mensaje: '' })
+
+  const handleEnviar = () => {
+    setEnviado(true)
+  }
+
   return (
     <main style={{
       minHeight: '100vh',
+      background: '#FDFAF4',
       fontFamily: '"Times New Roman", Times, serif',
-      background: '#1a0f00',
-      color: '#f5edd8',
-      position: 'relative',
-      overflow: 'hidden',
     }}>
 
-      {/* Fondo con imagen del campo */}
+      {/* Header */}
       <div style={{
-        position: 'fixed',
-        top: 0, left: 0, right: 0, bottom: 0,
-        backgroundImage: `url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1800&q=80')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        zIndex: 0,
-      }} />
-
-      {/* Overlay oscuro */}
-      <div style={{
-        position: 'fixed',
-        top: 0, left: 0, right: 0, bottom: 0,
-        background: 'linear-gradient(to bottom, rgba(20,10,0,0.55) 0%, rgba(20,10,0,0.85) 100%)',
-        zIndex: 1,
-      }} />
-
-      {/* Nav */}
-      <nav style={{
-        position: 'relative', zIndex: 10,
+        background: '#2C1A0E',
+        padding: '20px 48px',
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        padding: '28px 48px',
-        borderBottom: '1px solid rgba(245,237,216,0.15)',
       }}>
-        <div style={{
-          fontSize: '32px', fontWeight: '700', letterSpacing: '4px',
-          textTransform: 'uppercase', color: '#f5edd8',
-        }}>
+        <a href="/" style={{ fontSize: '28px', fontWeight: '700', color: 'white', textDecoration: 'none', letterSpacing: '3px' }}>
           RAÍ<span style={{ color: '#C8842A' }}>Z</span>
+        </a>
+        <div style={{ display: 'flex', gap: '24px' }}>
+          <a href="/catalogo" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none', fontSize: '14px' }}>Productos</a>
+          <a href="/nosotros" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none', fontSize: '14px' }}>Nosotros</a>
+          <a href="/login" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none', fontSize: '14px' }}>Entrar</a>
         </div>
-        <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
-          <a href="/catalogo" style={{ color: 'rgba(245,237,216,0.8)', textDecoration: 'none', fontSize: '15px', letterSpacing: '1px' }}>Productos</a>
-          <a href="/suscripciones" style={{ color: 'rgba(245,237,216,0.8)', textDecoration: 'none', fontSize: '15px', letterSpacing: '1px' }}>Suscripciones</a>
-          <a href="/login" style={{
-            background: '#C8842A', color: 'white',
-            padding: '10px 24px', borderRadius: '4px',
-            textDecoration: 'none', fontSize: '14px', letterSpacing: '1px',
-          }}>Entrar</a>
-        </div>
-      </nav>
+      </div>
 
       {/* Hero */}
-      <div style={{
-        position: 'relative', zIndex: 10,
-        minHeight: '85vh',
-        display: 'flex', flexDirection: 'column',
-        justifyContent: 'center', alignItems: 'flex-start',
-        padding: '0 48px',
-        maxWidth: '900px',
-      }}>
-        <div style={{
-          fontSize: '11px', letterSpacing: '4px', textTransform: 'uppercase',
-          color: '#C8842A', marginBottom: '24px', fontFamily: 'Georgia, serif',
-        }}>
-          🌿 Agroindustria colombiana directa
-        </div>
-
-        <h1 style={{
-          fontSize: 'clamp(52px, 8vw, 96px)',
-          fontWeight: '700',
-          lineHeight: '1.05',
-          letterSpacing: '-1px',
-          margin: '0 0 28px 0',
-          color: '#f5edd8',
-        }}>
-          Del campo<br />
-          <em style={{ color: '#C8842A', fontStyle: 'italic' }}>colombiano,</em><br />
-          directo a ti.
-        </h1>
-
-        <p style={{
-          fontSize: '20px', lineHeight: '1.7',
-          color: 'rgba(245,237,216,0.75)',
-          maxWidth: '520px', marginBottom: '40px',
-          fontWeight: '400',
-        }}>
-          Conectamos familias productoras del Huila, Boyacá y Nariño con consumidores urbanos. Sin intermediarios. Con trazabilidad completa.
+      <div style={{ background: '#2C1A0E', padding: '60px 48px', color: 'white' }}>
+        <p style={{ fontSize: '11px', letterSpacing: '4px', textTransform: 'uppercase', color: '#C8842A', marginBottom: '16px' }}>
+          Contáctenos
         </p>
-
-        <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-          <a href="/catalogo" style={{
-            background: '#C8842A', color: 'white',
-            padding: '18px 40px', borderRadius: '4px',
-            textDecoration: 'none', fontSize: '16px',
-            fontFamily: '"Times New Roman", serif',
-            letterSpacing: '1px',
-            transition: 'all 0.2s',
-          }}>
-            Ver productos →
-          </a>
-          <a href="/login" style={{
-            background: 'transparent', color: '#f5edd8',
-            padding: '18px 40px', borderRadius: '4px',
-            textDecoration: 'none', fontSize: '16px',
-            border: '1px solid rgba(245,237,216,0.4)',
-            fontFamily: '"Times New Roman", serif',
-            letterSpacing: '1px',
-          }}>
-            Soy productor
-          </a>
-        </div>
+        <h1 style={{ fontSize: 'clamp(36px, 5vw, 60px)', fontWeight: '700', margin: '0 0 16px 0' }}>
+          Estamos para <em style={{ color: '#C8842A' }}>ayudarte.</em>
+        </h1>
+        <p style={{ fontSize: '18px', color: 'rgba(255,255,255,0.7)', maxWidth: '500px', lineHeight: '1.7' }}>
+          ¿Eres productor y quieres unirte? ¿Tienes una pregunta sobre tu pedido? Escríbenos.
+        </p>
       </div>
 
-      {/* Franja de productos */}
-      <div style={{
-        position: 'relative', zIndex: 10,
-        background: 'rgba(20,10,0,0.9)',
-        borderTop: '1px solid rgba(200,132,42,0.3)',
-        padding: '40px 48px',
-        display: 'flex', gap: '48px',
-        flexWrap: 'wrap',
-      }}>
-        {[
-          { emoji: '☕', nombre: 'Café Especial', origen: 'Huila · Nariño · Antioquia' },
-          { emoji: '🟫', nombre: 'Panela Orgánica', origen: 'Boyacá · Santander' },
-          { emoji: '🍯', nombre: 'Miel de Abeja', origen: 'Boyacá · Cundinamarca' },
-          { emoji: '🍫', nombre: 'Cacao Fino', origen: 'Tumaco · Arauca' },
-        ].map((p, i) => (
-          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <span style={{ fontSize: '32px' }}>{p.emoji}</span>
-            <div>
-              <div style={{ fontSize: '16px', fontWeight: '700', color: '#f5edd8', letterSpacing: '0.5px' }}>
-                {p.nombre}
-              </div>
-              <div style={{ fontSize: '12px', color: '#C8842A', letterSpacing: '1px', marginTop: '2px' }}>
-                📍 {p.origen}
-              </div>
+      <div style={{ maxWidth: '700px', margin: '0 auto', padding: '60px 48px' }}>
+
+        {!enviado ? (
+          <div style={{
+            background: 'white', borderRadius: '24px', padding: '48px',
+            boxShadow: '0 4px 24px rgba(44,26,14,0.08)',
+          }}>
+            <h2 style={{ fontSize: '26px', fontWeight: '700', color: '#2C1A0E', marginBottom: '32px' }}>
+              Envíanos un mensaje
+            </h2>
+
+            <div style={{ marginBottom: '16px' }}>
+              <label style={{ fontSize: '13px', color: '#8A7A6A', letterSpacing: '1px', textTransform: 'uppercase', display: 'block', marginBottom: '8px' }}>
+                Nombre completo
+              </label>
+              <input
+                type="text"
+                value={form.nombre}
+                onChange={e => setForm({ ...form, nombre: e.target.value })}
+                placeholder="Tu nombre"
+                style={{
+                  width: '100%', padding: '14px 18px', borderRadius: '12px',
+                  border: '1.5px solid rgba(44,26,14,0.15)', fontSize: '15px',
+                  outline: 'none', boxSizing: 'border-box',
+                  fontFamily: '"Times New Roman", serif',
+                }}
+              />
             </div>
-          </div>
-        ))}
-      </div>
 
-      {/* Sección valores */}
-      <div style={{
-        position: 'relative', zIndex: 10,
-        background: '#f5edd8',
-        padding: '80px 48px',
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-        gap: '48px',
-      }}>
-        {[
-          { titulo: 'Sin intermediarios', desc: 'El precio justo llega completo al productor. Tú pagas menos, ellos ganan más.', icono: '🤝' },
-          { titulo: 'Trazabilidad total', desc: 'Escanea el QR de tu empaque y conoce la finca, la familia y el proceso.', icono: '📱' },
-          { titulo: 'Envío a Colombia', desc: 'Servientrega recoge directo en la finca y lo lleva a tu puerta en días.', icono: '🚚' },
-        ].map((v, i) => (
-          <div key={i}>
-            <div style={{ fontSize: '40px', marginBottom: '16px' }}>{v.icono}</div>
-            <h3 style={{
-              fontSize: '24px', fontWeight: '700', color: '#2C1A0E',
-              marginBottom: '12px', letterSpacing: '-0.5px',
-            }}>
-              {v.titulo}
-            </h3>
-            <p style={{ fontSize: '16px', color: '#5C3D1E', lineHeight: '1.7' }}>
-              {v.desc}
-            </p>
+            <div style={{ marginBottom: '16px' }}>
+              <label style={{ fontSize: '13px', color: '#8A7A6A', letterSpacing: '1px', textTransform: 'uppercase', display: 'block', marginBottom: '8px' }}>
+                Correo electrónico
+              </label>
+              <input
+                type="email"
+                value={form.email}
+                onChange={e => setForm({ ...form, email: e.target.value })}
+                placeholder="tu@correo.com"
+                style={{
+                  width: '100%', padding: '14px 18px', borderRadius: '12px',
+                  border: '1.5px solid rgba(44,26,14,0.15)', fontSize: '15px',
+                  outline: 'none', boxSizing: 'border-box',
+                  fontFamily: '"Times New Roman", serif',
+                }}
+              />
+            </div>
+
+            <div style={{ marginBottom: '16px' }}>
+              <label style={{ fontSize: '13px', color: '#8A7A6A', letterSpacing: '1px', textTransform: 'uppercase', display: 'block', marginBottom: '8px' }}>
+                Soy
+              </label>
+              <select
+                value={form.tipo}
+                onChange={e => setForm({ ...form, tipo: e.target.value })}
+                style={{
+                  width: '100%', padding: '14px 18px', borderRadius: '12px',
+                  border: '1.5px solid rgba(44,26,14,0.15)', fontSize: '15px',
+                  outline: 'none', boxSizing: 'border-box',
+                  fontFamily: '"Times New Roman", serif',
+                  background: 'white',
+                }}>
+                <option value="consumidor">Consumidor — quiero comprar</option>
+                <option value="productor">Productor — quiero vender</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+
+            <div style={{ marginBottom: '28px' }}>
+              <label style={{ fontSize: '13px', color: '#8A7A6A', letterSpacing: '1px', textTransform: 'uppercase', display: 'block', marginBottom: '8px' }}>
+                Mensaje
+              </label>
+              <textarea
+                value={form.mensaje}
+                onChange={e => setForm({ ...form, mensaje: e.target.value })}
+                placeholder="Cuéntanos cómo podemos ayudarte..."
+                rows={5}
+                style={{
+                  width: '100%', padding: '14px 18px', borderRadius: '12px',
+                  border: '1.5px solid rgba(44,26,14,0.15)', fontSize: '15px',
+                  outline: 'none', boxSizing: 'border-box', resize: 'vertical',
+                  fontFamily: '"Times New Roman", serif',
+                }}
+              />
+            </div>
+
+            <button
+              onClick={handleEnviar}
+              style={{
+                width: '100%', background: '#2C1A0E', color: 'white',
+                border: 'none', borderRadius: '100px', padding: '18px',
+                fontSize: '16px', fontWeight: '600', cursor: 'pointer',
+                fontFamily: '"Times New Roman", serif', letterSpacing: '1px',
+              }}>
+              Enviar mensaje →
+            </button>
           </div>
-        ))}
+        ) : (
+          <div style={{
+            background: 'white', borderRadius: '24px', padding: '48px',
+            textAlign: 'center',
+            boxShadow: '0 4px 24px rgba(44,26,14,0.08)',
+          }}>
+            <div style={{ fontSize: '64px', marginBottom: '24px' }}>🌱</div>
+            <h2 style={{ fontSize: '28px', fontWeight: '700', color: '#2C1A0E', marginBottom: '12px' }}>
+              ¡Mensaje recibido!
+            </h2>
+            <p style={{ fontSize: '16px', color: '#8A7A6A', lineHeight: '1.7', marginBottom: '32px' }}>
+              Te respondemos en menos de 24 horas.
+            </p>
+            <a href="/" style={{
+              background: '#2C1A0E', color: 'white',
+              padding: '14px 32px', borderRadius: '100px',
+              textDecoration: 'none', fontSize: '15px',
+            }}>
+              Volver al inicio
+            </a>
+          </div>
+        )}
+
+        {/* Info de contacto */}
+        <div style={{
+          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: '16px', marginTop: '32px',
+        }}>
+          {[
+            { icono: '📧', titulo: 'Email', valor: 'hola@raiz.com.co' },
+            { icono: '📱', titulo: 'WhatsApp', valor: '+57 300 000 0000' },
+            { icono: '📍', titulo: 'Colombia', valor: 'Bogotá · Medellín · Cali' },
+          ].map((c, i) => (
+            <div key={i} style={{
+              background: 'white', borderRadius: '16px', padding: '20px',
+              textAlign: 'center', boxShadow: '0 2px 12px rgba(44,26,14,0.06)',
+            }}>
+              <div style={{ fontSize: '28px', marginBottom: '8px' }}>{c.icono}</div>
+              <div style={{ fontSize: '11px', color: '#8A7A6A', letterSpacing: '1px', textTransform: 'uppercase' }}>{c.titulo}</div>
+              <div style={{ fontSize: '13px', color: '#2C1A0E', fontWeight: '600', marginTop: '4px' }}>{c.valor}</div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Footer */}
       <div style={{
-        position: 'relative', zIndex: 10,
-        background: '#0f0800',
-        padding: '32px 48px',
+        background: '#0f0800', padding: '32px 48px',
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        borderTop: '1px solid rgba(200,132,42,0.2)',
         flexWrap: 'wrap', gap: '16px',
       }}>
         <div style={{ fontSize: '22px', fontWeight: '700', letterSpacing: '3px', color: '#f5edd8' }}>
           RAÍ<span style={{ color: '#C8842A' }}>Z</span>
         </div>
-        <p style={{ fontSize: '13px', color: 'rgba(245,237,216,0.4)', letterSpacing: '1px' }}>
-          Del campo colombiano, directo a ti · © 2026
-        </p>
+        <p style={{ fontSize: '13px', color: 'rgba(245,237,216,0.4)' }}>© 2026 Raíz SAS · Colombia</p>
       </div>
 
     </main>
