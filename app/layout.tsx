@@ -11,7 +11,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es">
       <body style={{ margin: 0, padding: 0 }}>
 
-        {/* Nav global */}
         <nav style={{
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
@@ -41,7 +40,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </nav>
 
-        {/* Contenido con padding para el nav */}
         <div style={{ paddingTop: '72px' }}>
           {children}
         </div>
