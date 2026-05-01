@@ -1,5 +1,7 @@
 'use client'
+
 import { useState } from 'react'
+import Link from 'next/link'
 
 const productosIniciales = [
   {
@@ -48,7 +50,7 @@ export default function Carrito() {
       fontFamily: 'Georgia, serif',
     }}>
 
-      {/* Header */}
+      {/* HEADER */}
       <div style={{
         background: 'white',
         padding: '20px 24px',
@@ -57,12 +59,25 @@ export default function Carrito() {
         justifyContent: 'space-between',
         alignItems: 'center',
       }}>
-        <h1 style={{ fontSize: '24px', fontWeight: '900', color: '#2C1A0E', margin: 0 }}>
+        
+        {/* LOGO → vuelve al home */}
+        <Link href="/" style={{
+          fontSize: '24px',
+          fontWeight: '900',
+          color: '#2C1A0E',
+          textDecoration: 'none'
+        }}>
           RAÍ<span style={{ color: '#C8842A' }}>Z</span>
-        </h1>
-        <a href="/catalogo" style={{ color: '#8A7A6A', textDecoration: 'none', fontSize: '14px' }}>
+        </Link>
+
+        {/* VOLVER A CATÁLOGO */}
+        <Link href="/catalogo" style={{
+          color: '#8A7A6A',
+          textDecoration: 'none',
+          fontSize: '14px'
+        }}>
           ← Seguir comprando
-        </a>
+        </Link>
       </div>
 
       <div style={{
@@ -80,7 +95,7 @@ export default function Carrito() {
           Tu carrito 🛒
         </h2>
 
-        {/* Items */}
+        {/* ITEMS */}
         <div style={{ marginBottom: '24px' }}>
           {items.map(item => (
             <div key={item.id} style={{
@@ -99,7 +114,7 @@ export default function Carrito() {
                 <div style={{ fontWeight: '700', color: '#2C1A0E', fontSize: '15px' }}>
                   {item.nombre}
                 </div>
-                <div style={{ fontSize: '12px', color: '#8A7A6A', marginTop: '2px' }}>
+                <div style={{ fontSize: '12px', color: '#8A7A6A' }}>
                   {item.productor} · {item.unidad}
                 </div>
                 <div style={{ fontWeight: '700', color: '#C8842A', marginTop: '6px' }}>
@@ -108,45 +123,23 @@ export default function Carrito() {
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                
+                {/* CONTROLES */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <button
-                    onClick={() => cambiarCantidad(item.id, -1)}
-                    style={{
-                      width: '28px', height: '28px',
-                      borderRadius: '50%',
-                      border: '1.5px solid rgba(44,26,14,0.2)',
-                      background: 'transparent',
-                      cursor: 'pointer',
-                      fontSize: '16px',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    }}>
+                  <button onClick={() => cambiarCantidad(item.id, -1)} style={btnMinus}>
                     −
                   </button>
-                  <span style={{ fontWeight: '700', color: '#2C1A0E' }}>{item.cantidad}</span>
-                  <button
-                    onClick={() => cambiarCantidad(item.id, 1)}
-                    style={{
-                      width: '28px', height: '28px',
-                      borderRadius: '50%',
-                      background: '#2C1A0E',
-                      border: 'none',
-                      cursor: 'pointer',
-                      fontSize: '16px',
-                      color: 'white',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    }}>
+
+                  <span style={{ fontWeight: '700', color: '#2C1A0E' }}>
+                    {item.cantidad}
+                  </span>
+
+                  <button onClick={() => cambiarCantidad(item.id, 1)} style={btnPlus}>
                     +
                   </button>
                 </div>
-                <button
-                  onClick={() => eliminar(item.id)}
-                  style={{
-                    background: 'none',
-                    border: 'none',
-                    color: '#8A7A6A',
-                    fontSize: '12px',
-                    cursor: 'pointer',
-                  }}>
+
+                <button onClick={() => eliminar(item.id)} style={btnEliminar}>
                   Eliminar
                 </button>
               </div>
@@ -154,66 +147,110 @@ export default function Carrito() {
           ))}
         </div>
 
-        {/* Resumen */}
-        <div style={{
-          background: 'white',
-          borderRadius: '20px',
-          padding: '24px',
-          boxShadow: '0 2px 12px rgba(44,26,14,0.06)',
-          marginBottom: '16px',
-        }}>
-          <h3 style={{ fontSize: '16px', fontWeight: '700', color: '#2C1A0E', marginBottom: '16px' }}>
-            Resumen del pedido
-          </h3>
+        {/* RESUMEN */}
+        <div style={cardResumen}>
+          <h3 style={tituloResumen}>Resumen del pedido</h3>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-            <span style={{ color: '#8A7A6A' }}>Subtotal</span>
-            <span style={{ color: '#2C1A0E', fontWeight: '600' }}>${subtotal.toLocaleString()}</span>
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-            <span style={{ color: '#8A7A6A' }}>Envío Servientrega</span>
-            <span style={{ color: '#2C1A0E', fontWeight: '600' }}>${envio.toLocaleString()}</span>
-          </div>
+          <Fila label="Subtotal" value={subtotal} />
+          <Fila label="Envío Servientrega" value={envio} />
 
-          <div style={{
-            borderTop: '1px solid rgba(44,26,14,0.08)',
-            paddingTop: '16px',
-            display: 'flex',
-            justifyContent: 'space-between',
-          }}>
-            <span style={{ fontWeight: '700', color: '#2C1A0E', fontSize: '18px' }}>Total</span>
-            <span style={{ fontWeight: '900', color: '#C8842A', fontSize: '22px' }}>
+          <div style={totalRow}>
+            <span>Total</span>
+            <span style={{ color: '#C8842A' }}>
               ${total.toLocaleString()}
             </span>
           </div>
         </div>
 
-        {/* Botón pagar */}
-        <button style={{
-          width: '100%',
-          background: '#2C1A0E',
-          color: 'white',
-          border: 'none',
-          borderRadius: '100px',
-          padding: '18px',
-          fontSize: '17px',
-          fontWeight: '700',
-          cursor: 'pointer',
-          fontFamily: 'Georgia, serif',
-        }}>
+        {/* BOTÓN PAGAR */}
+        <button style={btnPagar}>
           Pagar con Wompi →
         </button>
 
-        <p style={{
-          textAlign: 'center',
-          fontSize: '12px',
-          color: '#8A7A6A',
-          marginTop: '12px',
-        }}>
+        <p style={footerText}>
           🔒 Pago seguro · Envío a todo Colombia
         </p>
 
       </div>
     </main>
+  )
+}
+
+/* 🎨 ESTILOS LIMPIOS */
+const btnMinus = {
+  width: '28px',
+  height: '28px',
+  borderRadius: '50%',
+  border: '1.5px solid rgba(44,26,14,0.2)',
+  background: 'transparent',
+  cursor: 'pointer'
+}
+
+const btnPlus = {
+  width: '28px',
+  height: '28px',
+  borderRadius: '50%',
+  background: '#2C1A0E',
+  border: 'none',
+  color: 'white',
+  cursor: 'pointer'
+}
+
+const btnEliminar = {
+  background: 'none',
+  border: 'none',
+  color: '#8A7A6A',
+  fontSize: '12px',
+  cursor: 'pointer'
+}
+
+const cardResumen = {
+  background: 'white',
+  borderRadius: '20px',
+  padding: '24px',
+  marginBottom: '16px',
+  boxShadow: '0 2px 12px rgba(44,26,14,0.06)'
+}
+
+const tituloResumen = {
+  fontSize: '16px',
+  fontWeight: '700',
+  marginBottom: '16px'
+}
+
+const totalRow = {
+  borderTop: '1px solid rgba(44,26,14,0.08)',
+  paddingTop: '16px',
+  display: 'flex',
+  justifyContent: 'space-between',
+  fontWeight: '900',
+  fontSize: '20px'
+}
+
+const btnPagar = {
+  width: '100%',
+  background: '#2C1A0E',
+  color: 'white',
+  border: 'none',
+  borderRadius: '100px',
+  padding: '18px',
+  fontSize: '17px',
+  fontWeight: '700',
+  cursor: 'pointer'
+}
+
+const footerText = {
+  textAlign: 'center',
+  fontSize: '12px',
+  color: '#8A7A6A',
+  marginTop: '12px'
+}
+
+function Fila({ label, value }: { label: string; value: number }) {
+  return (
+    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+      <span style={{ color: '#8A7A6A' }}>{label}</span>
+      <span style={{ fontWeight: '600' }}>${value.toLocaleString()}</span>
+    </div>
   )
 }
