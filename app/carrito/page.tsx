@@ -239,7 +239,7 @@ const btnPagar = {
   cursor: 'pointer'
 }
 
-const footerText = {
+const footerText: React.CSSProperties = {
   textAlign: 'center',
   fontSize: '12px',
   color: '#8A7A6A',
