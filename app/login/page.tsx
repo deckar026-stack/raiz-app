@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { supabase } from '../../lib/supabase'
 
 export default function Login() {
@@ -13,6 +13,12 @@ export default function Login() {
   const [modo, setModo] = useState('login')
   const [mensaje, setMensaje] = useState('')
   const [cargando, setCargando] = useState(false)
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const tipoParam = params.get('tipo')
+    if (tipoParam) setTipo(tipoParam)
+  }, [])
 
   const handleAuth = async () => {
     setCargando(true)
@@ -49,7 +55,6 @@ export default function Login() {
       fontFamily: '"Times New Roman", serif',
       padding: '24px', position: 'relative',
     }}>
-
       <div style={{
         position: 'fixed', inset: 0,
         backgroundImage: `url('/campo.jpg')`,

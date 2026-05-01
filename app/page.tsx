@@ -45,7 +45,7 @@ export default function Home() {
             }}>
               Ver productos →
             </Link>
-            <Link href="/login" style={{
+            <Link href="/login?tipo=productor" style={{
               border: '1px solid rgba(245,237,216,0.4)', color: '#f5edd8',
               padding: '18px 40px', borderRadius: '4px',
               textDecoration: 'none', fontSize: '16px', letterSpacing: '1px',
