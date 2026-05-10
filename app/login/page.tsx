@@ -158,18 +158,22 @@ export default function Login() {
               {modo === 'login' ? '¿No tienes cuenta? Regístrate' : '¿Ya tienes cuenta? Entra'}
             </button>
 
+            {modo === 'login' && (
+              <button onClick={() => window.location.href = '/recuperar'} style={{
+                width: '100%', background: 'transparent', color: 'rgba(245,237,216,0.5)',
+                border: 'none', fontSize: '14px', cursor: 'pointer',
+                marginBottom: '8px', fontFamily: '"Times New Roman", serif',
+              }}>
+                ¿Olvidaste tu contraseña?
+              </button>
+            )}
+
             <button onClick={() => setTipo('')} style={{
               width: '100%', background: 'transparent', color: 'rgba(245,237,216,0.5)',
               border: 'none', fontSize: '14px', cursor: 'pointer',
               fontFamily: '"Times New Roman", serif',
             }}>
-              ← Volver<button onClick={() => window.location.href = '/recuperar'} style={{
-  width: '100%', background: 'transparent', color: 'rgba(245,237,216,0.5)',
-  border: 'none', fontSize: '14px', cursor: 'pointer',
-  marginBottom: '8px', fontFamily: '"Times New Roman", serif',
-}}>
-  ¿Olvidaste tu contraseña?
-</button>
+              ← Volver
             </button>
           </div>
         )}
