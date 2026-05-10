@@ -163,7 +163,13 @@ export default function Login() {
               border: 'none', fontSize: '14px', cursor: 'pointer',
               fontFamily: '"Times New Roman", serif',
             }}>
-              ← Volver
+              ← Volver<button onClick={() => window.location.href = '/recuperar'} style={{
+  width: '100%', background: 'transparent', color: 'rgba(245,237,216,0.5)',
+  border: 'none', fontSize: '14px', cursor: 'pointer',
+  marginBottom: '8px', fontFamily: '"Times New Roman", serif',
+}}>
+  ¿Olvidaste tu contraseña?
+</button>
             </button>
           </div>
         )}
